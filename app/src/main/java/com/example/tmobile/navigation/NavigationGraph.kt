@@ -1,6 +1,5 @@
 package com.example.tmobile.navigation
 
-import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -22,12 +21,12 @@ fun NavGraphBuilder.navigationGraph(
 
     ) {
         onBoardingScreen(navController)
-        firstScreen(navController,actions)
+        firstScreen(navController)
         secondScreen()
     }
 }
 
-    fun NavGraphBuilder.firstScreen(navController: NavController,actions: Actions){
+    fun NavGraphBuilder.firstScreen(navController: NavController){
         composable(route = ROUTE_FIRST_SCREEN) {
             ListScreen("Nisha Hello", buttonClick = {
 
@@ -35,7 +34,7 @@ fun NavGraphBuilder.navigationGraph(
             })
         }
     }
-fun NavGraphBuilder.onBoardingScreen(navController: NavController){
+fun NavGraphBuilder.onBoardingScreen(){
         composable(route = ROUTE_SPLASH_SCREEN) {
             OnboardingScreen(valid = true)
         }

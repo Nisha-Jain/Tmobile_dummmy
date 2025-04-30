@@ -1,4 +1,4 @@
-package com.example.tmobile.activity
+package com.example.tmobile.presentation.components.components
 
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
@@ -36,18 +36,18 @@ fun OnboardingScreen(
     val color = remember { Animatable(Color.Black) }
     val currentValid = rememberUpdatedState(newValue = valid)
 
-//    LaunchedEffect(key1 = null) {
-//        delay(3000)
-//        if (currentValid.value == true) onSplashEndedValid()
-//        else onSplashEndedInvalid()
-//    }
+    LaunchedEffect(key1 = null) {
+        delay(3000)
+        if (currentValid.value == true) onSplashEndedValid()
+        else onSplashEndedInvalid()
+    }
 
-//    LaunchedEffect(key1 = valid) {
-//        valid?.let { valid ->
-//            val animateToColor = if (valid) Color.Green else Color.Red
-//            color.animateTo(animateToColor, animationSpec = tween(500))
-//        }
-//    }
+    LaunchedEffect(key1 = valid) {
+        valid?.let { valid ->
+            val animateToColor = if (valid) Color.Green else Color.Red
+            color.animateTo(animateToColor, animationSpec = tween(500))
+        }
+    }
 
     Column(
         modifier = modifier.fillMaxSize(),
@@ -55,7 +55,7 @@ fun OnboardingScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.mipmap.ic_launcher),
+            painter = painterResource(id = R.drawable.ic_launcher_background),
             contentDescription = null,
             colorFilter = ColorFilter.tint(color.value),
             modifier = Modifier.size(100.dp),

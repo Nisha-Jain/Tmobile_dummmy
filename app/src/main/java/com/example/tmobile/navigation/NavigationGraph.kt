@@ -4,11 +4,12 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.example.tmobile.activity.DetailsScreen
-import com.example.tmobile.activity.ListScreen
-import com.example.tmobile.activity.OnboardingScreen
-import com.example.tmobile.navigation.Navigation.Route.ROUTE_FIRST_SCREEN
+import com.example.tmobile.presentation.components.components.DetailsScreen
+import com.example.tmobile.presentation.components.components.ListScreen
+import com.example.tmobile.presentation.components.components.OnboardingScreen
+import com.example.tmobile.presentation.components.components.SignInScreen
 import com.example.tmobile.navigation.Navigation.Route.ROUTE_SPLASH_SCREEN
+import com.example.tmobile.navigation.Navigation.Route.SPLASH_SCREEN
 
 fun NavGraphBuilder.navigationGraph(
     navController: NavController,
@@ -17,26 +18,30 @@ fun NavGraphBuilder.navigationGraph(
 
     navigation(
         startDestination = ROUTE_SPLASH_SCREEN,
-        route = Navigation.Path.SPLASH_SCREEN
-
+        route = SPLASH_SCREEN
     ) {
         onBoardingScreen(navController)
         firstScreen(navController)
         secondScreen()
+        signInScreen(navController)
     }
 }
 
+
+
     fun NavGraphBuilder.firstScreen(navController: NavController){
-        composable(route = ROUTE_FIRST_SCREEN) {
+        composable(route = Navigation.Path.FIRST_SCREEN) {
             ListScreen("Nisha Hello", buttonClick = {
 
                 navController.navigate(Navigation.Path.SECOND_SCREEN)
             })
         }
     }
-fun NavGraphBuilder.onBoardingScreen(){
+fun NavGraphBuilder.onBoardingScreen(navController: NavController){
         composable(route = ROUTE_SPLASH_SCREEN) {
-            OnboardingScreen(valid = true)
+            OnboardingScreen(valid = true,
+                onSplashEndedValid = {navController.navigate(Navigation.Path.SIGN_IN_SCREEN)
+                {popUpTo(SPLASH_SCREEN){ inclusive = true} }})
         }
     }
 fun NavGraphBuilder.secondScreen(){
@@ -44,3 +49,10 @@ fun NavGraphBuilder.secondScreen(){
             DetailsScreen("Nisha HelloBBB")
         }
     }
+
+
+fun NavGraphBuilder.signInScreen(navController: NavController){
+    composable(route = Navigation.Path.SIGN_IN_SCREEN) {
+        SignInScreen()
+    }
+}

@@ -1,4 +1,4 @@
-package com.example.tmobile.navigation
+package com.example.tmobile.presentations.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
@@ -9,8 +9,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 
-class Actions(navController: NavController){
-    val navigateToSecond:() -> Unit = {
+class Actions(navController: NavController) {
+    val navigateToSecond: () -> Unit = {
         navController.navigate(Navigation.Path.SECOND_SCREEN)
     }
 }
@@ -18,17 +18,13 @@ class Actions(navController: NavController){
 @Composable
 fun NavigationNavHost(
     navHostController: NavHostController,
-
-){
+    ) {
     val action = remember { Actions(navHostController) }
     NavHost(
         navController = navHostController,
         startDestination = Navigation.Path.SPLASH_SCREEN, modifier = Modifier.padding(5.dp),
     ) {
-
-        navigationGraph(navHostController, actions = action )
-
+        navigationGraph(navHostController, actions = action)
     }
-
 }
 

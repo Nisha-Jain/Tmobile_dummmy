@@ -1,4 +1,4 @@
-package com.example.tmobile.presentation.components.components
+package com.example.tmobile.presentations.component
 
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween

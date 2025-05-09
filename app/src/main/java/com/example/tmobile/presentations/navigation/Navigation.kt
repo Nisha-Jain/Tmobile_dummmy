@@ -1,4 +1,4 @@
-package com.example.tmobile.navigation
+package com.example.tmobile.presentations.navigation
 
 object Navigation {
     object Route {

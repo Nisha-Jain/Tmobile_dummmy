@@ -1,4 +1,4 @@
-package com.example.tmobile.presentation.components.components
+package com.example.tmobile.presentations.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,7 +29,8 @@ fun TAlertDialogPreview() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TAlertDialog(
-    showDialog: MutableStateFlow<Boolean> = remember  { MutableStateFlow(false) }
+    showDialog: MutableStateFlow<Boolean> = remember { MutableStateFlow(false) },
+    text: String = stringResource(R.string.something_went_wrong)
 ) {
     BasicAlertDialog(
         onDismissRequest = {
@@ -43,11 +44,11 @@ fun TAlertDialog(
                     text = stringResource(R.string.whoops),
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
-                    )
+                )
                 Spacer(Modifier.padding(10.dp))
 
                 Text(
-                    text = stringResource(R.string.something_went_wrong),
+                    text = text,
                     fontSize = 14.sp
                 )
                 Spacer(Modifier.padding(10.dp))

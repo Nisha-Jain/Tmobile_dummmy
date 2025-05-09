@@ -1,6 +1,5 @@
-package com.example.tmobile.presentation.components.components
+package com.example.tmobile.presentations.component
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -15,17 +14,14 @@ import androidx.compose.ui.unit.dp
 import com.example.tmobile.ui.theme.TMobileTheme
 
 @Composable
-fun ListScreen(name: String, modifier: Modifier = Modifier, buttonClick :()  -> Unit = {}) {
+fun DetailsScreen(name: String, modifier: Modifier = Modifier) {
     Column {
         Text(
             text = "Hello $name!",
             modifier = modifier
         )
         Button(
-            onClick = {
-                buttonClick()
-                Log.d("Hellfdshbfhss","My nam e")
-            },
+            onClick = { },
             modifier = Modifier.padding(5.dp),
             enabled = true,
             shape = ButtonDefaults.shape,
@@ -37,7 +33,7 @@ fun ListScreen(name: String, modifier: Modifier = Modifier, buttonClick :()  -> 
             ),
         ) {
             Text(
-                text = "Hello $!",
+                text = "Hello New!",
                 modifier = modifier
             )
         }
@@ -46,8 +42,8 @@ fun ListScreen(name: String, modifier: Modifier = Modifier, buttonClick :()  -> 
 
 @Preview(showBackground = true)
 @Composable
-fun ListScreenPreview() {
+fun DetailsScreenPreview() {
     TMobileTheme {
-        ListScreen("Android")
+        DetailsScreen("Android")
     }
 }
